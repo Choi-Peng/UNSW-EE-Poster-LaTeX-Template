@@ -1,0 +1,103 @@
+\begin{center}
+\vspace{0.5em}
+\begin{tikzpicture}[scale=1.1,transform shape]
+% Define colors
+\definecolor{timelineblue}{RGB}{70,130,180}
+\definecolor{eventred}{RGB}{220,50,50}
+
+% Timeline parameters
+\def\timelinestart{0}
+\def\timelineend{10}
+\def\timelinewidth{1}
+
+% Draw main vertical timeline (top to bottom)
+\draw[line width=3pt,timelineblue](0,\timelineend)--(0,\timelinestart);
+
+% Month labels and markers (top to bottom)
+\pgfmathsetmacro{\sep}{0}
+\pgfmathsetmacro{\dec}{2}
+\pgfmathsetmacro{\feb}{4}
+\pgfmathsetmacro{\may}{6}
+\pgfmathsetmacro{\aug}{8}
+\foreach \i/\month in {
+\aug/Aug 2025,
+\may/May 2025,
+\feb/Feb 2025,
+\dec/Dec 2024,
+\sep/Sep 2024
+}{
+  \pgfmathsetmacro{\y}{\timelineend - \i}
+  \draw[line width=2pt,timelineblue](-0.2,\y)--(0.2,\y);
+  \node[left,align=right,font=\small\bfseries] at (-0.3,\y) {\textcolor{gray}{\month}};
+}
+
+% Terms (adjusted for top-down direction)
+    % \node[above, align=center, font=\footnotesize] at (3*1.5/2, 0.5) {\textcolor{gray}{Term 3, 2024}};
+
+\node[left,font=\footnotesize,align=right] at (-0.3,{\timelineend - \dec/2}) {\textcolor{gray}{Term3, 2024}};
+
+\node[left,font=\footnotesize,align=right] at (-0.3,{\timelineend - (\feb + (\may - \feb)/2)}) {\textcolor{gray}{Term1, 2025}};
+
+\node[left,font=\footnotesize,align=right] at (-0.3,{\timelineend - (\may + (\aug - \may)/2)}) {\textcolor{gray}{Term2, 2025}};
+
+% Events
+% ThesisStart
+\pgfmathsetmacro{\y}{\timelineend - \sep}
+\node[anchor=north west,yshift=0.35em,align=left,font=\footnotesize] at (0.5,\y) {
+  \textcolor{eventred}{\textbf{Thesis Start}}\\[2pt]
+  \textcolor{black}{Problem identified}\\
+  \textcolor{black}{Measurement system developed}
+  
+};
+\draw[eventred, line width=1pt](0,\y)--(0.4,\y);
+\fill[eventred](0,\y) circle(2pt);
+
+% ProjectAEnd
+\pgfmathsetmacro{\y}{\timelineend - \dec}
+\node[anchor=north west,yshift=0.35em,align=left,font=\footnotesize] at (0.5,\y) {
+  \textcolor{eventred}{\textbf{Project A End}}\\[3pt]
+  \begin{varwidth}{8cm}
+    \textbf{My Collected Data}
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=12pt]
+      \item XXX 
+      \item XXX
+    \end{itemize}
+  \end{varwidth}
+};
+\draw[eventred, line width=1pt](0,\y)--(0.4,\y);
+\fill[eventred](0,\y) circle(2pt);
+
+% ProjectBEnd
+\pgfmathsetmacro{\y}{\timelineend - \may}
+\node[anchor=north west,yshift=0.35em,align=left,font=\footnotesize] at (0.5,\y) {
+  \textcolor{eventred}{\textbf{Project B End}}\\[3pt]
+  \begin{varwidth}{8cm}
+    \textbf{My Collected Data}
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=12pt]
+      \item XXX 
+      \item XXX
+    \end{itemize}
+  \end{varwidth}
+};
+\draw[eventred, line width=1pt](0,\y)--(0.4,\y);
+\fill[eventred](0,\y) circle(2pt);
+
+% PosterOpenDay
+\pgfmathsetmacro{\y}{\timelineend - \aug}
+\node[anchor=north west,yshift=0.35em,align=left,font=\footnotesize] at (0.5,\y) {
+  \textcolor{eventred}{\textbf{Poster Open Day}}\\[3pt]
+  \begin{varwidth}{4.3cm}
+    \textbf{My Thesis Outcomes}
+    \begin{itemize}[noitemsep,topsep=0pt,leftmargin=12pt]
+      \item XXX 
+      \item XXX
+    \end{itemize}
+  \end{varwidth}
+};
+\draw[eventred, line width=1pt](0,\y)--(0.4,\y);
+\fill[eventred](0,\y) circle(2pt);
+\end{tikzpicture}
+
+  
+\end{center}
+% \vspace{-3em}
